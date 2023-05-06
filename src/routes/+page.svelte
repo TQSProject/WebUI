@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import Login from "../Login.svelte";
+	import Navbar from "../Navbar.svelte";
+	import Sidebar from "../Sidebar.svelte";
+	import Wallpaper from "../Wallpaper.svelte";
+
+</script>
+
+<Navbar loggedIn={false}/>
+<Wallpaper />
+<Login />
