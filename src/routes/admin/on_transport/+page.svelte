@@ -1,7 +1,6 @@
 <script>
-	import Navbar from '../../Navbar.svelte';
-	import Sidebar from '../../Sidebar.svelte';
-	import Wallpaper from '../../Wallpaper.svelte';
+	import Sidebar from '../../../Components/admin/Sidebar.svelte';
+	import Navbar from '../../../Navbar.svelte';
 
   let cats = [
 		{ id: 'J---aiyznGQ', name: 'Keyboard Cat' },

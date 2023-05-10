@@ -1,95 +1,56 @@
-<div class="my-form">
-	<form method="POST" action="/login">
+
+	<form method="POST" action="/login" class="box my-form">
 		<div class="field">
 			<label class="label">Name</label>
-			<div class="control">
+			<div class="control is-one-fifth">
 				<input class="input" type="text" placeholder="Text input" />
 			</div>
 		</div>
 
 		<div class="field">
-			<label class="label">Username</label>
-			<div class="control has-icons-left has-icons-right">
-				<input class="input is-success" type="text" placeholder="Text input" value="bulma" />
-				<span class="icon is-small is-left">
-					<i class="fas fa-user" />
-				</span>
-				<span class="icon is-small is-right">
-					<i class="fas fa-check" />
-				</span>
-			</div>
-			<p class="help is-success">This username is available</p>
-		</div>
-
-		<div class="field">
 			<label class="label" for="login_email">Email</label>
-			<div class="control has-icons-left">
+			<div class="control">
 				<input
 					id="login_email"
-					class="input"
+					class="input"	
 					type="email"
 					placeholder="Email input"
 					value="hello@"
 				/>
-				<span class="icon is-small is-left">
-					<i class="fas fa-envelope" />
-				</span>
 			</div>
 		</div>
 
 		<div class="field">
-			<label class="label">Subject</label>
+			<label class="label" for="password">Password</label>
 			<div class="control">
-				<div class="select">
-					<select>
-						<option>Select dropdown</option>
-						<option>With options</option>
-					</select>
-				</div>
+				<input class="input" type="password" />
 			</div>
 		</div>
 
 		<div class="field">
 			<div class="control">
-				<label class="checkbox">
-					<input type="checkbox" />
-					I agree to the <a href="#">terms and conditions</a>
-				</label>
-			</div>
-		</div>
-
-		<div class="field">
-			<div class="control">
-				<label class="radio">
-					<input type="radio" name="question" />
-					Yes
-				</label>
-				<label class="radio">
-					<input type="radio" name="question" />
-					No
-				</label>
+				Don't have an account? Click <a href="/signup">here</a>
 			</div>
 		</div>
 
 		<div class="field is-grouped">
-			<div class="control">
-				<button class="button is-link">Submit</button>
-			</div>
-			<div class="control">
-				<button class="button is-link is-light">Cancel</button>
+			<div class="control my-full-parent-size">
+				<button class="button is-link is-fullwidth">Log In</button>
 			</div>
 		</div>
 	</form>
-</div>
 
 <style>
 	.my-form {
-		width: 80%;
+		width: 60%;
 		height: 40%;
 		margin: auto;
 		margin-top: 100px;
-		padding: 20px 40px;
+		padding: 40px 60px;
 		border: 1px solid red;
-		background-color: white;
+		background-color: #202020;
+	}
+	.my-full-parent-size {
+		width: 100%;
 	}
 </style>

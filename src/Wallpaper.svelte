@@ -8,5 +8,6 @@
         position: absolute;
         top: 0;
         z-index: -1;
+        filter: blur(5px);
     }
 </style>
