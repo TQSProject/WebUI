@@ -1,0 +1,16 @@
+{
+	"/": [],
+	"/admin/allpartners": [],
+	"/admin/cancelled": [],
+	"/admin/dashboard": [],
+	"/admin/deliveries": [],
+	"/admin/on_transport": [],
+	"/admin/pendingpartners": [],
+	"/login": [
+		"src/routes/login/+page.server.js"
+	],
+	"/partner/dashboard": [],
+	"/signup": [
+		"src/routes/signup/+page.server.js"
+	]
+}
