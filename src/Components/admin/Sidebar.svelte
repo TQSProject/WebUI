@@ -4,17 +4,17 @@
 	</ul>
 	<ul class="menu-list">
 		<li class="my-link"><a href="/admin/dashboard">Dashboard</a></li>
-		<li class="my-link"><a href="/admin/deliveries">Deliveries</a></li>
+		<li class="my-link"><a href="/admin/delivery">Specific Delivery</a></li>
 	</ul>
 	<ul class="menu-list">
 		<li>
 			<a class="my-link" href="/">Manage Deliveries</a>
 			<ul>
-				<li class="my-link"><a href="/admin">New</a></li>
-				<li class="my-link"><a href="/admin/cancelled">Canceled</a></li>
-				<li class="my-link"><a href="/admin/">In progress</a></li>
+				<li class="my-link"><a href="/admin/new">New</a></li>
+				<li class="my-link"><a href="/admin/progress">In progress</a></li>
 				<li class="my-link"><a href="/admin/on_transport">In transportation</a></li>
-				<li class="my-link"><a href="/admin/">Delivered</a></li>
+				<li class="my-link"><a href="/admin/cancelled">Cancelled</a></li>
+				<li class="my-link"><a href="/admin/finished">Delivered</a></li>
 			</ul>
 		</li>
 		<li>
@@ -22,11 +22,10 @@
 			<ul>
 				<li class="my-link"><a href="/admin/allpartners">See All</a></li>
 				<li class="my-link"><a href="/admin/pendingpartners">Pending requests</a></li>
+				<li class="my-link"><a href="/admin/nearme">Search in area</a></li>
 			</ul>
 		</li>
-		<li class="my-link"><a href="/admin/dashboard">...Something...</a></li>
-		<li class="my-link"><a href="/admin/dashboard">...Something...</a></li>
-		<li class="my-link"><a href="/admin/dashboard">Statistics</a></li>
+		<li class="my-link"><a href="/admin/statistics">Statistics</a></li>
 	</ul>
 </aside>
 

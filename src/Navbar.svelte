@@ -1,3 +1,10 @@
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+</svelte:head>
+
+
 <script>
 	export let loggedIn = false;
 </script>
@@ -20,15 +27,11 @@
 
 	<div id="navbarBasicExample" class="navbar-menu">
 		<div class="navbar-start">
+			<div class="text-4xl pt-4 mx-3 my-logo text-white">PickUs</div>
 			<a class="navbar-item" href="/"> Home </a>
-
-			<a class="navbar-item" href="https://bulma.io"> Documentation </a>
-
-			<a class="navbar-item" href="https://bulma.io"> About </a>
-			
-			<a class="navbar-item" href="https://bulma.io"> Jobs </a>
-			
-			<a class="navbar-item" href="https://bulma.io"> Contact </a>
+			<a class="navbar-item" href="/"> Team </a>
+			<a class="navbar-item" href="/"> About Us</a>
+			<a class="navbar-item" href="/"> Contact </a>
 
 		</div>
 	</div>
@@ -44,5 +47,11 @@
 	}
 	.my-bg-red {
 		background-color: #C41E3A;
+	}
+	.navbar-item {
+		color: white;
+	}
+	.my-logo {
+		font-family: 'Varela Round', sans-serif;
 	}
 </style>

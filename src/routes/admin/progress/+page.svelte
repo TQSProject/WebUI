@@ -14,7 +14,7 @@
 
 
 <ManagementContainer>
-	<Table title={"In Transit"} items={orders} accept_refuse={false}></Table>
+	<Table title={"In progress"} items={orders} accept_refuse={false}></Table>
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />
