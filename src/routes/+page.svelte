@@ -1,2 +1,14 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	/** @type {import('@sveltejs/adapter-vercel').Config} */
+	export const config = {
+    	runtime: 'nodejs18.x'
+	};
+    import Login from "../Login.svelte";
+	import Navbar from "../Navbar.svelte";
+	import Wallpaper from "../Wallpaper.svelte";
+
+</script>
+
+<Navbar loggedIn={false}/>
+<Wallpaper />
+<Login />
