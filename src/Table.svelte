@@ -2,10 +2,10 @@
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     import { Button } from 'flowbite-svelte';
     export let items = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
+        { id: 1, registed_time: '10-5-2023 12:56', name: 'Worten Viseu', city: "User 1" },
+        { id: 2, registed_time: '10-5-2023 12:56', name: 'Worten Viseu', city: "User 1" },
+        { id: 3, registed_time: '10-5-2023 12:56', name: 'Worten Aveiro', city: "User 1" },
+        { id: 4, registed_time: '10-5-2023 12:56', name: 'Worten Viseu', city: "User 1" }
     ];
     export let accept_refuse = false;
     export let title = '';
@@ -15,7 +15,7 @@
   <div class="text-5xl mb-4">
     {title}
   </div>
-  <Table striped={true} shadow>
+  <Table striped={true} >
     <TableHead class="text-xs text-gray-700 uppercase bg-red-200 dark:bg-gray-700 dark:text-gray-400">
       <TableHeadCell>Product id</TableHeadCell>
       <TableHeadCell>Date</TableHeadCell>
@@ -34,9 +34,9 @@
         {#each items as item}
         <TableBodyRow>
             <TableBodyCell>{item.id}</TableBodyCell>
-            <TableBodyCell>{item.date}</TableBodyCell>
-            <TableBodyCell>{item.source}</TableBodyCell>
-            <TableBodyCell>{item.destination}</TableBodyCell>
+            <TableBodyCell>{item.registed_time}</TableBodyCell>
+            <TableBodyCell>{item.name}</TableBodyCell>
+            <TableBodyCell>{item.city}</TableBodyCell>
             {#if accept_refuse}
                 <TableBodyCell>
                     <Button color="blue">Accept</Button>

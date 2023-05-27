@@ -12,6 +12,8 @@ export const actions = {
         // TODO sign up the user
         console.log("Here");
         await new Promise(r => setTimeout(r, 2000));
+        console.log(email, password);
+
 
         //if (url.searchParams.has('redirectTo')) {
 		throw redirect(303, '/');

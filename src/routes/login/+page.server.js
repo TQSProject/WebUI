@@ -12,9 +12,10 @@ export const actions = {
         // TODO log the user in
         console.log("Here");
         await new Promise(r => setTimeout(r, 2000));
-
+        console.log(email, password);
+        
         //if (url.searchParams.has('redirectTo')) {
-		throw redirect(303, '/partner/dashboard');
+		throw redirect(303, '/admin/dashboard');
 		//}
     }
 };
