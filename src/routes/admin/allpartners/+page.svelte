@@ -4,40 +4,22 @@
 	import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
-	import Table from "../../../Table.svelte";
+	import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
+    import { Button } from 'flowbite-svelte';
     import { onMount } from "svelte";
-    import { writable, derived } from 'svelte/store';
 
-    const old_partners = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
-    ];
+    let partners = [];
 
-    let partners = [
-        { date: '10-5-2023 12:56', name: 'Worten Aveiro', city: "Aveiro" },
-        { date: '10-5-2023 12:56', name: 'Worten Viseu', city: "Viseu" },
-        { date: '10-5-2023 12:56', name: 'Fnac Aveiro', city: "Aveiro" },
-        { date: '10-5-2023 12:56', name: 'Worten Porto', city: "Porto" }
-    ];
-
-    const apiData = writable([]);
-
-    const drinkNames = derived(apiData, ($apiData) => {
-        if ($apiData.drinks){
-            return $apiData.drinks.map(drink => drink.strDrink);
-        }
-        return [];
-    });
+    let total = 0;
 
     onMount(async () => {
-        fetch("http://localhost:8080/api/v1/acps")
+        fetch("http://localhost:8080/api/v1/acps?status=APPROVED")
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            apiData.set(data);
+            //apiData.set(data);
             partners = data;
+            total = partners.length
         }).catch(error => {
             console.log(error);
             return [];
@@ -47,14 +29,41 @@
 
 
 <ManagementContainer>
-	<Table title={"All Partners"} items={partners} accept_refuse={false}></Table>
+    <div class="text-5xl mb-4">
+        All Partners
+      </div>
+      <Table striped={true} >
+        <TableHead class="text-xs text-gray-700 uppercase bg-red-200 dark:bg-gray-700 dark:text-gray-400">
+          <TableHeadCell>Product id</TableHeadCell>
+          <TableHeadCell>Enrolled Date</TableHeadCell>
+          <TableHeadCell>PickUp Point Name</TableHeadCell>
+          <TableHeadCell>City</TableHeadCell>
+          <TableHeadCell></TableHeadCell>
+        </TableHead>
+        <TableBody>
+            {#each partners as acp}
+            <TableBodyRow>
+                <TableBodyCell>{acp.id}</TableBodyCell>
+                <TableBodyCell>{acp.registed_time}</TableBodyCell>
+                <TableBodyCell>{acp.name}</TableBodyCell>
+                <TableBodyCell>{acp.city}</TableBodyCell>
+                    <TableBodyCell>
+                        <Button color="red">Refuse</Button>
+                    </TableBodyCell>
+            </TableBodyRow>
+            {/each} 
+        </TableBody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+              <th scope="row" class="py-3 px-6 text-base">Total</th>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+            </tr>
+          </tfoot>
+      </Table>
 
-    <h1>Whiskey Drinks Menu</h1>
-	<ul>
-	{#each partners as p}
-		<li>{p.name}</li>
-	{/each}
-	</ul>
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />

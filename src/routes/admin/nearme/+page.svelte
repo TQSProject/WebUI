@@ -10,12 +10,7 @@
     import { writable, derived } from 'svelte/store';
 
 
-	let deliveries = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Fnac', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
-    ];
+    let partners = [];
     
     let search = false;
     
@@ -57,4 +52,11 @@
     {#if search}
         <Table title={"All Partners"} items={deliveries} accept_refuse={false}></Table>
     {/if}
+
+    <h1>Whiskey Drinks Menu</h1>
+	<ul>
+	{#each partners as p}
+		<li>{p.name}</li>
+	{/each}
+	</ul>
 </ManagementContainer>
