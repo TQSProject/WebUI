@@ -11,10 +11,11 @@
 			<a class="my-link" href="/">Manage Deliveries</a>
 			<ul>
 				<li class="my-link"><a href="/admin/new">New</a></li>
-				<li class="my-link"><a href="/admin/progress">In progress</a></li>
 				<li class="my-link"><a href="/admin/on_transport">In transportation</a></li>
-				<li class="my-link"><a href="/admin/cancelled">Cancelled</a></li>
+				<li class="my-link"><a href="/admin/progress">Ready for Client to pick up</a></li>
 				<li class="my-link"><a href="/admin/finished">Delivered</a></li>
+				<li class="my-link"><a href="/admin/returned">Returned</a></li>
+				<li class="my-link"><a href="/admin/cancelled">Cancelled</a></li>
 			</ul>
 		</li>
 		<li>

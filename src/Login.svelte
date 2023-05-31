@@ -1,27 +1,35 @@
+<script>
+	import { acp_name } from "$lib/vars";
 
-	<form method="POST" action="/login" class="box my-form">
+	let email = '';
+
+	let new_name = '';
+</script>
+
+	<form method="POST" action={email == "admin@ua.pt" ? "/login?/admin" : "/login?/acp"} class="box my-form">	
+		
 		<div class="field">
-			<label class="label">Name</label>
+			<label class="label my-label" for="login_name">Name</label>
 			<div class="control is-one-fifth">
-				<input class="input" type="text" placeholder="Text input" />
+				<input class="input" type="text" id="login_name" placeholder="name" bind:value={new_name} on:input={() => {acp_name.set({"name": new_name})}} />
 			</div>
 		</div>
 
 		<div class="field">
-			<label class="label" for="login_email">Email</label>
+			<label class="label my-label" for="login_email">Email</label>
 			<div class="control">
 				<input
 					id="login_email"
 					class="input"	
 					type="email"
-					placeholder="Email input"
-					value="hello@"
+					placeholder="email"
+					bind:value={email}
 				/>
 			</div>
 		</div>
 
 		<div class="field">
-			<label class="label" for="password">Password</label>
+			<label class="label my-label" for="password">Password</label>
 			<div class="control">
 				<input class="input" type="password" />
 			</div>
@@ -52,5 +60,8 @@
 	}
 	.my-full-parent-size {
 		width: 100%;
+	}
+	.my-label {
+		color: white;
 	}
 </style>

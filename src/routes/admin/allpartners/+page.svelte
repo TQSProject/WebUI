@@ -7,13 +7,14 @@
 	import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     import { Button } from 'flowbite-svelte';
     import { onMount } from "svelte";
+    import { api_host } from "$lib/vars";
 
     let partners = [];
 
     let total = 0;
 
     onMount(async () => {
-        fetch("http://localhost:8080/api/v1/acps?status=APPROVED")
+        fetch(api_host + "/api/v1/acps?status=APPROVED")
         .then(response => response.json())
         .then(data => {
             console.log(data);

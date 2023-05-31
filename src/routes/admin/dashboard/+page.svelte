@@ -5,10 +5,26 @@
 	import Table from "../../../Table.svelte";
 
     const orders = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
+        {
+        "id": 1,
+        "store": "eStore",
+        "buyer": "Ricardo",
+        "product": "Toothpaste Nax Pro",
+        "count": 3,
+        "acp": {
+            "id": 1,
+            "name": "Worten Lisboa",
+            "city": "Lisboa",
+            "registed_time": "28/05/2023 00:07:37",
+            "status": "REFUSED"
+        },
+        "status": "DELIVERING",
+        "createdDateTime": "2023-05-28T00:07:39.158152",
+        "approvedDateTime": "2023-05-28T00:07:41.973758",
+        "estimatedDeliveryDateTime": "2023-05-28T00:08:09.974752",
+        "deliveredDateTime": null,
+        "pickedUpDateTime": null
+    }
     ];
 </script>
 

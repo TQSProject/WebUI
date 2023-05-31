@@ -6,13 +6,14 @@
 	import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
     import { Button } from 'flowbite-svelte';
     import { onMount } from "svelte";
+    import { api_host } from "$lib/vars";
 
     let partners = [];
 
     let total = 0;
 
     onMount(async () => {
-        fetch("http://localhost:8080/api/v1/acps?status=WAITING_ADMIN_APPROVAL")
+        fetch(api_host + "/api/v1/acps?status=WAITING_ADMIN_APPROVAL")
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -25,10 +26,10 @@
     });
 
 
-	let result = null
+	let result = null;
 	
 	async function acceptACP(_apcId) {
-        const res = await fetch('http://localhost:8080/api/v1/acps/' + _apcId, {
+        const res = await fetch(api_host + '/api/v1/acps/' + _apcId, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -45,7 +46,7 @@
     }
 
 	async function refuseACP(_apcId) {
-        const res = await fetch('http://localhost:8080/api/v1/acps/' + _apcId, {
+        const res = await fetch(api_host + '/api/v1/acps/' + _apcId, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
