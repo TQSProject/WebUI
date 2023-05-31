@@ -30,11 +30,11 @@
 
 <ManagementContainer>
     <div class="text-5xl mb-4">
-        All Partners
+        All Pick Up Points
       </div>
       <Table striped={true} >
         <TableHead class="text-xs text-gray-700 uppercase bg-red-200 dark:bg-gray-700 dark:text-gray-400">
-          <TableHeadCell>Product id</TableHeadCell>
+          <TableHeadCell>Pick Up Point ID</TableHeadCell>
           <TableHeadCell>Enrolled Date</TableHeadCell>
           <TableHeadCell>PickUp Point Name</TableHeadCell>
           <TableHeadCell>City</TableHeadCell>

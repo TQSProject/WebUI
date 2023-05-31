@@ -1,20 +1,109 @@
 <script>
-	import Sidebar from "../../../Components/admin/Sidebar.svelte";
+// @ts-nocheck
+    import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
-	import Table from "../../../Table.svelte";
+	import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell } from 'flowbite-svelte';
+    import { Button } from 'flowbite-svelte';
+    import { onMount } from "svelte";
 
-    const partners = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
-    ];
+    let partners = [];
+
+    let total = 0;
+
+    onMount(async () => {
+        fetch("http://localhost:8080/api/v1/acps?status=WAITING_ADMIN_APPROVAL")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            partners = data;
+            total = partners.length
+        }).catch(error => {
+            console.log(error);
+            return [];
+        });
+    });
+
+
+	let result = null
+	
+	async function acceptACP(_apcId) {
+        const res = await fetch('http://localhost:8080/api/v1/acps/' + _apcId, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "status": "APPROVED"
+            })
+        })
+        
+        const json = await res.json()
+        result = JSON.stringify(json)
+
+        window.location.href = '/admin/allpartners';
+    }
+
+	async function refuseACP(_apcId) {
+        const res = await fetch('http://localhost:8080/api/v1/acps/' + _apcId, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "status": "REFUSED"
+            })
+        })
+        
+        const json = await res.json()
+        result = JSON.stringify(json)
+    
+        window.location.href = '/admin/allpartners';
+    }
 </script>
 
 
 <ManagementContainer>
-	<Table title={"Pending Partners"} items={partners} accept_refuse={true}></Table>
+    <div class="text-5xl mb-4">
+        Pendind Pick Up Points
+      </div>
+      <Table striped={true} >
+        <TableHead class="text-xs text-gray-700 uppercase bg-red-200 dark:bg-gray-700 dark:text-gray-400">
+          <TableHeadCell>Pick Up Point ID</TableHeadCell>
+          <TableHeadCell>Enrolled Date</TableHeadCell>
+          <TableHeadCell>PickUp Point Name</TableHeadCell>
+          <TableHeadCell>City</TableHeadCell>
+          <TableHeadCell></TableHeadCell>
+          <TableHeadCell></TableHeadCell>
+        </TableHead>
+        <TableBody>
+            {#each partners as acp}
+            <TableBodyRow>
+                <TableBodyCell>{acp.id}</TableBodyCell>
+                <TableBodyCell>{acp.registed_time}</TableBodyCell>
+                <TableBodyCell>{acp.name}</TableBodyCell>
+                <TableBodyCell>{acp.city}</TableBodyCell>
+                <TableBodyCell>
+                    <Button color="blue"  on:click={() => acceptACP(acp.id)}>Accept</Button>
+                </TableBodyCell>
+                <TableBodyCell>
+                    <Button color="red" on:click={() => refuseACP(acp.id)}>Refuse</Button>
+                </TableBodyCell>
+            </TableBodyRow>
+            {/each} 
+        </TableBody>
+        <tfoot>
+            <tr class="font-semibold text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+              <th scope="row" class="py-3 px-6 text-base">Total</th>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+              <td class="py-3 px-6">{total}</td>
+            </tr>
+          </tfoot>
+      </Table>
+
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />
