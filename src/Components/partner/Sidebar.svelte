@@ -4,17 +4,17 @@
 	</ul>
 	<ul class="menu-list">
 		<li class="my-link"><a href="/partner/dashboard">Dashboard</a></li>
-		<li class="my-link"><a href="/partner/deliveries">Deliveries</a></li>
 	</ul>
 	<ul class="menu-list">
 		<li>
 			<a class="my-link" href="/">Manage Deliveries</a>
 			<ul>
-				<li class="my-link"><a href="/partner">New</a></li>
+				<li class="my-link"><a href="/partner/new">Waiting Admin Approval</a></li>
+				<li class="my-link"><a href="/partner/transportation">In transportation</a></li>
+				<li class="my-link"><a href="/partner/pickup">Ready for Client to pick up</a></li>
+				<li class="my-link"><a href="/partner/delivered">Delivered</a></li>
+				<li class="my-link"><a href="/partner/returned">Returned</a></li>
 				<li class="my-link"><a href="/partner/cancelled">Canceled</a></li>
-				<li class="my-link"><a href="/partner/">In progress</a></li>
-				<li class="my-link"><a href="/partner/on_transport">In transportation</a></li>
-				<li class="my-link"><a href="/partner">Delivered</a></li>
 			</ul>
 		</li>
 		<li class="my-link"><a href="partner/dashboard">Analysis</a></li>

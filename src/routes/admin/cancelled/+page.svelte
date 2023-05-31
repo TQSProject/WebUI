@@ -1,15 +1,29 @@
 <script>
+    // @ts-nocheck
+
 	import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
 	import Table from "../../../Table.svelte";
+    import { onMount } from "svelte";
 
-    const orders = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
-    ];
+    let orders = [];
+
+    let total = 0;
+
+    onMount(async () => {
+        fetch("http://localhost:8080/api/v1/orders?status=DELIVERING")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            //apiData.set(data);
+            orders = data;
+            total = orders.length
+        }).catch(error => {
+            console.log(error);
+            return [];
+        });
+    });
 </script>
 
 
