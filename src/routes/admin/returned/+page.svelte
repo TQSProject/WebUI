@@ -1,7 +1,7 @@
 <script>
     // @ts-nocheck
 
-	import Sidebar from "../../../Components/partner/Sidebar.svelte";
+	import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
     import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Button } from 'flowbite-svelte';

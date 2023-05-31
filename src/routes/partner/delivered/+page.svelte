@@ -4,7 +4,7 @@
 	import Sidebar from "../../../Components/partner/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
-	import Table from "../../../Table.svelte";
+    import { Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Button } from 'flowbite-svelte';
     import { onMount } from "svelte";
     import { api_host } from "$lib/vars";
 
@@ -17,7 +17,6 @@
         .then(response => response.json())
         .then(data => {
             console.log(data);
-            //apiData.set(data);
             orders = data;
             total = orders.length
         }).catch(error => {
@@ -29,7 +28,39 @@
 
 
 <ManagementContainer>
-	<Table title={"Delivered"} items={orders} accept_refuse={false}></Table>
+
+    <div class="text-5xl mb-4">
+        Delivered
+    </div>
+    <Table striped={true} >
+    <TableHead class="text-xs text-gray-700 uppercase bg-red-200 dark:bg-gray-700 dark:text-gray-400">
+        <TableHeadCell>Order ID</TableHeadCell>
+        <TableHeadCell>Delivered At</TableHeadCell>
+        <TableHeadCell>eStore</TableHeadCell>
+        <TableHeadCell>Product</TableHeadCell>
+        <TableHeadCell>Buyer</TableHeadCell>
+    </TableHead>
+    <TableBody>
+        {#each orders as order}
+        <TableBodyRow>
+            <TableBodyCell>{order.id}</TableBodyCell>
+            <TableBodyCell>{order.pickedUpDateTime}</TableBodyCell>
+            <TableBodyCell>{order.store}</TableBodyCell>
+            <TableBodyCell>{order.product}</TableBodyCell>
+            <TableBodyCell>{order.buyer}</TableBodyCell>
+        </TableBodyRow>
+        {/each} 
+    </TableBody>
+    <tfoot>
+        <tr class="font-semibold text-gray-900 bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <th scope="row" class="py-3 px-6 text-base">Total</th>
+            <td class="py-3 px-6">{total}</td>
+            <td class="py-3 px-6">{total}</td>
+            <td class="py-3 px-6">{total}</td>
+            <td class="py-3 px-6">{total}</td>
+        </tr>
+        </tfoot>
+    </Table>
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />

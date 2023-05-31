@@ -1,20 +1,33 @@
 <script>
+    // @ts-nocheck
 	import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
 	import Table from "../../../Table.svelte";
+    import { onMount } from "svelte";
+    import { api_host } from "$lib/vars";
 
-    const orders = [
-        { id: 1, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 2, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" },
-        { id: 3, date: '10-5-2023 12:56', source: 'Worten Aveiro', destination: "User 1" },
-        { id: 4, date: '10-5-2023 12:56', source: 'Worten Viseu', destination: "User 1" }
-    ];
+    let orders = [];
+
+    let total = 0;
+
+    onMount(async () => {
+        fetch(api_host + "/api/v1/orders?status=DELIVERED_AND_WAITING_FOR_PICKUP")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            orders = data;
+            total = orders.length
+        }).catch(error => {
+            console.log(error);
+            return [];
+        });
+    });
 </script>
 
 
 <ManagementContainer>
-	<Table title={"In progress"} items={orders} accept_refuse={false}></Table>
+	<Table title={"Delivered to Pick Up Point"} items={orders} accept_refuse={false}></Table>
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />

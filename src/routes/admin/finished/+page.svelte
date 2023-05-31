@@ -1,6 +1,5 @@
 <script>
     // @ts-nocheck
-
 	import Sidebar from "../../../Components/admin/Sidebar.svelte";
 	import ManagementContainer from "../../../ManagementContainer.svelte";
 	import Navbar from "../../../Navbar.svelte";
@@ -28,7 +27,7 @@
 
 
 <ManagementContainer>
-	<Table title={"Finished"} items={orders} accept_refuse={false}></Table>
+	<Table title={"Devlivered To Client"} items={orders} accept_refuse={false}></Table>
 </ManagementContainer>
 <Navbar loggedIn={true}/>
 <Sidebar />

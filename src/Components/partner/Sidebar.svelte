@@ -14,10 +14,9 @@
 				<li class="my-link"><a href="/partner/pickup">Ready for Client to pick up</a></li>
 				<li class="my-link"><a href="/partner/delivered">Delivered</a></li>
 				<li class="my-link"><a href="/partner/returned">Returned</a></li>
-				<li class="my-link"><a href="/partner/cancelled">Canceled</a></li>
+				<li class="my-link"><a href="/partner/cancelled">Cancelled</a></li>
 			</ul>
 		</li>
-		<li class="my-link"><a href="partner/dashboard">Analysis</a></li>
 	</ul>
 </aside>
 

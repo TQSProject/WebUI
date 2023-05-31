@@ -1,6 +1,9 @@
 <script>
+	import { acp_name } from "$lib/vars";
+
 	let email = '';
 
+	let new_name = '';
 </script>
 
 	<form method="POST" action={email == "admin@ua.pt" ? "/login?/admin" : "/login?/acp"} class="box my-form">	
@@ -8,7 +11,7 @@
 		<div class="field">
 			<label class="label my-label" for="login_name">Name</label>
 			<div class="control is-one-fifth">
-				<input class="input" type="text" id="login_name" placeholder="Text input" />
+				<input class="input" type="text" id="login_name" placeholder="name" bind:value={new_name} on:input={() => {acp_name.set({"name": new_name})}} />
 			</div>
 		</div>
 
@@ -19,7 +22,7 @@
 					id="login_email"
 					class="input"	
 					type="email"
-					placeholder="Email input"
+					placeholder="email"
 					bind:value={email}
 				/>
 			</div>
